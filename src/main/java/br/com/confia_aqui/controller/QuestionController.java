@@ -1,6 +1,8 @@
-package br.com.confia_aqui.gamefication;
+package br.com.confia_aqui.controller;
 
 
+import br.com.confia_aqui.service.QuestionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("question")
 public class QuestionController {
 
+    @Autowired
+    QuestionService questionService;
+
+
+
     @GetMapping("allQuestions")
     public String getAllQuestions() {
-        return "Essas são todas as perguntas do jogo:";
+        return questionService.getAllQuestions(); //repare, mesmo metodo getAllQuestions
     }
 }
