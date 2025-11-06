@@ -4,10 +4,9 @@ package br.com.confia_aqui.controller;
 import br.com.confia_aqui.Question;
 import br.com.confia_aqui.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,19 +19,22 @@ public class QuestionController {
 
     //req get para todas as questions
     @GetMapping("allQuestions")
-    public List<Question> getAllQuestions(){
+    public ResponseEntity<List<Question>> getAllQuestions(){
          return questionService.getAllQuestions();
-        //repare, mesmo metodo getAllQuestions
 
     }
 
     //req get para uma categoria específica
     @GetMapping("category/{category}")
-    public List<Question> getQuestionsByCategory(@PathVariable String category){
+    public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String category){
     return questionService.getQuestionsByCategory(category);
 
     }
+//ADICIONAR PERGUNTA. NAO ESPECIFICAMOS ID POIS ELE É GERADO AUTOMATICAMENTE
+    @PostMapping("add")
+    public ResponseEntity<String>addQuestion(@RequestBody Question question){
+        return questionService.addQuestion(question);
+    }
 
-
-
+//56
 }
