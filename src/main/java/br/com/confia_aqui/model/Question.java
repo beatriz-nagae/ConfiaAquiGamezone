@@ -1,4 +1,4 @@
-package br.com.confia_aqui;
+package br.com.confia_aqui.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

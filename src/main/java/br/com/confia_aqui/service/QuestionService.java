@@ -1,6 +1,6 @@
 package br.com.confia_aqui.service;
 
-import br.com.confia_aqui.Question;
+import br.com.confia_aqui.model.Question;
 import br.com.confia_aqui.dao.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +34,14 @@ QuestionDao questionDao;
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public String addQuestion(Question question) {
-        questionDao.save(question);
-        //save cria e updata tb
-        return "Pergunta adicionada com sucesso!";
+
+    public ResponseEntity<String> addQuestion(Question question) {
+        try {
+            questionDao.save(question);
+            return new ResponseEntity<>("Pergunta adicionada com sucesso!", HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Erro ao adicionar pergunta", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

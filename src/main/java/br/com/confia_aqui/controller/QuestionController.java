@@ -1,10 +1,9 @@
 package br.com.confia_aqui.controller;
 
 
-import br.com.confia_aqui.Question;
+import br.com.confia_aqui.model.Question;
 import br.com.confia_aqui.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
