@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +22,8 @@ public class QuizService {
 
     public ResponseEntity<String> createQuiz(String category, int numQ, String title) {
 
-        List<Question> questions = questionDao.findRandomQuestionsByCategory(category, numQ);
+ List<Question> questions = questionDao.findRandomQuestionsByCategory(category, numQ);
+     // teste   List<Question> questions = new ArrayList<>(); // teste rápido
 
         Quiz quiz = new Quiz();
         quiz.setTitle(title);
